@@ -10,6 +10,7 @@
     --hover-btn: #188CE8;
     --header-border: #ECECEC;
     --icons-svg: #AFB1B8;
+    --time-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *,
@@ -136,33 +137,48 @@ a {
 
 .header-link {
     position: relative;
+    padding-top: 32px;
+    padding-bottom: 32.2px;
+    transition: color 250ms var(--time-function);
 }
 
-.header-link.active::after {
+.header-link::after {
     position:absolute;
     content: "";
-    bottom: -32.2px;
+    bottom: 0;
     right: 0;
     width: 100%;
     height: 4px;
+
     background-color: var(--active);
     border-radius: 2px;
+
+    transform: scaleX(0);
+    transition: transform 250ms var(--time-function);
 }
+
+.header-link.active::after {
+    transform: scaleX(1);
+}
+
 
 .header-contact {
     display: flex;
     margin-left: auto;
 }
 
-.header-link:hover,
-.header-link:focus,
+.header-link:hover::after,
+.header-link:focus::after,
 .contact-link:hover,
 .contact-link:focus {
+    transform:scaleX(1);
+    transition: transform 250ms var(--time-function);
+
     color: var(--active);
     cursor: pointer;
     fill: var(--active);
+    
 }
-
 
 .contact-link {
     color: var(--text);
@@ -181,7 +197,7 @@ a {
     align-items: center;
     padding-top: 200px;
     padding-bottom: 200px;
-    /* background-color: var(--brand-color); */
+
     background-image: linear-gradient(
         to right, 
         rgba(47, 48, 58, 0.4),
@@ -214,14 +230,22 @@ a {
     border: none;
     cursor: pointer;
 
+    font-weight: 700;
     color: var(--white);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.87;
+    letter-spacing: 0.06em;
     background-color: var(--active);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    transition: background-color 250ms var(--time-function);
     
 }
 
 .service-btn:hover {
     background-color: var(--hover-btn);
+    
 }
 
 
@@ -413,6 +437,7 @@ a {
     height: 44px;
     margin: 0;
     padding: 0;
+    transition: background-color 250ms var(--time-function);
 }
 
 .social-list:hover,
@@ -456,6 +481,8 @@ a {
     height: 92px;
     border: 1px solid var(--icons-svg);
     border-radius: 4px;
+
+    transition: color 250ms (--time-function), border-color 250ms var(--time-function);
     fill: var(--icons-svg);
 }
 .customers-item:last-child {
@@ -563,9 +590,10 @@ a {
 .control-btn {
     display: block;
     padding: 6px 22px;
-    background: var(--font-color);
     border-radius: 4px;
     border: none;   
+
+    background-color: var(--font-color);
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -575,10 +603,11 @@ a {
     letter-spacing: 0.03em;
     cursor: pointer;
     color: var(--favorit);
+    transition: color 250ms (--time-function), background-color 250ms var(--time-function);
 }
 
 .control-btn.active {
-    background: var(--hover-btn);
+    background-color: var(--hover-btn);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     font-family: 'Roboto';
@@ -593,8 +622,10 @@ a {
 
 .control-btn:hover,
 .control-btn:focus {
-    background: var(--hover-btn);
+    background-color: var(--hover-btn);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     border-radius: 4px;
     border: none;
     font-family: 'Roboto';
@@ -621,7 +652,6 @@ a {
     width: calc((100% - 60px) / 3);
     margin-right: 30px;
     margin-bottom: 30px;
-
     background: var(--white);
     border: 1px solid #EEEEEE;
 }
@@ -651,8 +681,44 @@ a {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.content-link:hover .content-overlay,
+.content-link:focus .content-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .content-wrap {
     padding: 20px 24px;
+}
+
+.content-tumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.content-overlay {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background-color: rgba( 33, 150, 243, 0.9);
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-overlay {
+    display: block;
+    padding: 63px 24px;
+
+    color: var(--white);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
 }
 
 .content-title {
