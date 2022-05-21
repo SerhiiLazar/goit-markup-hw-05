@@ -169,6 +169,8 @@ a {
 
 .header-link:hover::after,
 .header-link:focus::after,
+.header-link:hover,
+.header-link:focus,
 .contact-link:hover,
 .contact-link:focus {
     transform:scaleX(1);
