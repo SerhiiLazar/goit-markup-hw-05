@@ -678,7 +678,7 @@ a {
     letter-spacing: 0.03em;
     cursor: pointer;
     color: var(--favorit);
-    transition: color 250ms (--time-function), background-color 250ms var(--time-function);
+    transition: color 250ms var(--time-function), background-color 250ms var(--time-function), box-shadow 250ms var(--time-function);
 }
 
 .control-btn.active {
