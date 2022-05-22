@@ -557,7 +557,7 @@ a {
     border: 1px solid var(--icons-svg);
     border-radius: 4px;
 
-    transition: color 250ms (--time-function), border-color 250ms var(--time-function);
+    transition: color 250ms var(--time-function), border-color 250ms var(--time-function);
     fill: var(--icons-svg);
 }
 .customers-item:last-child {
